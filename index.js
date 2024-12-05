@@ -35,8 +35,7 @@ function authenticateToken(req, res, next) {
 
 // Ruta para registrarse
 app.post('/register', (req, res) => {
-  const username = req.body;
-  const password = req.body;
+  const { username, password } = req.body;
   users.push({ username, password });
   res.status(201).send('Usuario registrado');
 });
