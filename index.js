@@ -3,6 +3,7 @@ const fs = require('fs');
 const jwt = require('jsonwebtoken');
 
 const app = express();
+app.use(express.json());
 
 app.listen(3000, () => {
   console.log('Servidor iniciado');
@@ -35,6 +36,7 @@ function authenticateToken(req, res, next) {
 
 // Ruta para registrarse
 app.post('/register', (req, res) => {
+  console.log(req.body);
   const { username, password } = req.body;
   users.push({ username, password });
   res.status(201).send('Usuario registrado');
