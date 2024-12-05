@@ -8,9 +8,15 @@ ejecutes.
 Express. Recuerda que esta aplicación está disponible en la plataforma.
 */
 const express = require('express');
+const fs = require('fs');
+const jwt = require('jsonwebtoken');
 
 const app = express();
 
 app.listen(3000, () => {
   console.log('Servidor iniciado');
+});
+
+app.get('/', (req, res) => {
+  res.send('Bienvenido a la página principal');
 });

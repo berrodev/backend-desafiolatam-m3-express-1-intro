@@ -1,0 +1,254 @@
+{
+  "veterinaries": [
+    {
+      "id": 1,
+      "name": "Clínica Veterinaria Salud Animal",
+      "address": {
+        "street": "Av. Siempre Viva",
+        "number": 123,
+        "city": "Santiago",
+        "region": "Metropolitana",
+        "postal_code": "8320000"
+      },
+      "specialties": [
+        "Medicina general",
+        "Cirugía",
+        "Dermatología",
+        "Cardiología"
+      ],
+      "additional_services": [
+        "Peluquería canina",
+        "Vacunación",
+        "Guardería",
+        "Urgencias 24 horas"
+      ],
+      "contact_phone": "+56 2 1234 5678",
+      "open_days": [
+        {
+          "day": "monday",
+          "hours": "09:00 - 19:00"
+        },
+        {
+          "day": "tuesday",
+          "hours": "09:00 - 19:00"
+        },
+        {
+          "day": "wednesday",
+          "hours": "09:00 - 19:00"
+        },
+        {
+          "day": "thursday",
+          "hours": "09:00 - 19:00"
+        },
+        {
+          "day": "friday",
+          "hours": "09:00 - 19:00"
+        },
+        {
+          "day": "saturday",
+          "hours": "10:00 - 14:00"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "PetCare Veterinary Center",
+      "address": {
+        "street": "Calle Principal",
+        "number": 456,
+        "city": "Valparaíso",
+        "region": "Valparaíso",
+        "postal_code": "2340000"
+      },
+      "specialties": [
+        "Odontología",
+        "Neurología",
+        "Oncología"
+      ],
+      "additional_services": [
+        "Laboratorio",
+        "Rayos X",
+        "Tienda de alimentos y accesorios",
+        "Consulta a domicilio"
+      ],
+      "contact_phone": "+56 32 9876 5432",
+      "open_days": [
+        {
+          "day": "monday",
+          "hours": "08:00 - 22:00"
+        },
+        {
+          "day": "tuesday",
+          "hours": "08:00 - 22:00"
+        },
+        {
+          "day": "wednesday",
+          "hours": "08:00 - 22:00"
+        },
+        {
+          "day": "thursday",
+          "hours": "08:00 - 22:00"
+        },
+        {
+          "day": "friday",
+          "hours": "08:00 - 22:00"
+        },
+        {
+          "day": "saturday",
+          "hours": "08:00 - 22:00"
+        },
+        {
+          "day": "sunday",
+          "hours": "08:00 - 22:00"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Animal Care Plus",
+      "address": {
+        "street": "Camino del Sol",
+        "number": 987,
+        "city": "La Serena",
+        "region": "Coquimbo",
+        "postal_code": "1700000"
+      },
+      "specialties": [
+        "Medicina interna",
+        "Cirugía avanzada",
+        "Neurología"
+      ],
+      "additional_services": [
+        "Hospitalización",
+        "Laboratorio clínico",
+        "Guardería para mascotas",
+        "Consultas a domicilio"
+      ],
+      "contact_phone": "+56 51 4567 1234",
+      "open_days": [
+        {
+          "day": "monday",
+          "hours": "09:00 - 18:00"
+        },
+        {
+          "day": "tuesday",
+          "hours": "09:00 - 18:00"
+        },
+        {
+          "day": "wednesday",
+          "hours": "09:00 - 18:00"
+        },
+        {
+          "day": "thursday",
+          "hours": "09:00 - 18:00"
+        },
+        {
+          "day": "friday",
+          "hours": "09:00 - 18:00"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Veterinaria Los Andes",
+      "address": {
+        "street": "Av. Los Aromos",
+        "number": 432,
+        "city": "Los Andes",
+        "region": "Valparaíso",
+        "postal_code": "2100000"
+      },
+      "specialties": [
+        "Medicina general",
+        "Dermatología",
+        "Oftalmología"
+      ],
+      "additional_services": [
+        "Peluquería",
+        "Esterilización masiva",
+        "Vacunación",
+        "Tienda de alimentos y accesorios"
+      ],
+      "contact_phone": "+56 34 5678 9101",
+      "open_days": [
+        {
+          "day": "monday",
+          "hours": "08:00 - 20:00"
+        },
+        {
+          "day": "tuesday",
+          "hours": "08:00 - 20:00"
+        },
+        {
+          "day": "wednesday",
+          "hours": "08:00 - 20:00"
+        },
+        {
+          "day": "thursday",
+          "hours": "08:00 - 20:00"
+        },
+        {
+          "day": "friday",
+          "hours": "08:00 - 20:00"
+        },
+        {
+          "day": "saturday",
+          "hours": "09:00 - 14:00"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Centro Veterinario Patagonia",
+      "address": {
+        "street": "Calle Austral",
+        "number": 256,
+        "city": "Punta Arenas",
+        "region": "Magallanes",
+        "postal_code": "6200000"
+      },
+      "specialties": [
+        "Traumatología",
+        "Oncología",
+        "Rehabilitación física"
+      ],
+      "additional_services": [
+        "Rayos X",
+        "Terapia láser",
+        "Emergencias 24 horas",
+        "Consulta para animales exóticos"
+      ],
+      "contact_phone": "+56 61 3456 7890",
+      "open_days": [
+        {
+          "day": "monday",
+          "hours": "08:00 - 22:00"
+        },
+        {
+          "day": "tuesday",
+          "hours": "08:00 - 22:00"
+        },
+        {
+          "day": "wednesday",
+          "hours": "08:00 - 22:00"
+        },
+        {
+          "day": "thursday",
+          "hours": "08:00 - 22:00"
+        },
+        {
+          "day": "friday",
+          "hours": "08:00 - 22:00"
+        },
+        {
+          "day": "saturday",
+          "hours": "10:00 - 20:00"
+        },
+        {
+          "day": "sunday",
+          "hours": "10:00 - 18:00"
+        }
+      ]
+    }
+  ]
+}
