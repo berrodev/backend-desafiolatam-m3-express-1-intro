@@ -55,10 +55,12 @@ app.post('/login', (req, res) => {
   }
 });
 
-app.get('/', authenticateToken, (req, res) => {
+// Ruta de bienvenida (no protegida)
+app.get('/', (req, res) => {
   res.send('Hola mundo!');
 });
 
+// Ruta protegida
 app.get('/veterinaries', authenticateToken, (req, res) => {
   const vets = JSON.parse(fs.readFileSync('veterinaries.json'));
   res.json(vets);
