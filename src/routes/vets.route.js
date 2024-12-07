@@ -12,39 +12,29 @@ const router = Router();
 
 // Ruta para obtener todas las veterinarias
 router.get('/', async (req, res) => {
-  const vets = await getVeterinariesClinics();
-  res.json(vets);
-});
-
-// Ruta para registrarse
-router.post('/register', (req, res) => {
-  console.log(req.body);
-  const { username, password } = req.body;
-  if (!username || !password) {
-    return res.status(400).send('Usuario y contraseña requeridos');
-  }
-  users.push({ username, password });
-  res.status(201).send('Usuario registrado');
-});
-
-// Ruta para iniciar sesión
-router.post('/login', (req, res) => {
-  const { username, password } = req.body;
-  const user = users.find(
-    (u) => u.username === username && u.password === password
-  );
-  if (user) {
-    const token = jwt.sign({ username }, SECRET_KEY, { expiresIn: '1h' });
-    res.json({ token });
-  } else {
-    res.status(401).send('Credenciales inválidas');
+  try {
+    const vets = await getVeterinariesClinics();
+    res.json(vets);
+  } catch (error) {
+    res.status(500).send('Error getting veterinaries');
   }
 });
 
-// // Ruta protegida
-// router.get('/', authenticateToken, (req, res) => {
-//   const vets = JSON.parse(fs.readFileSync('veterinaries.json'));
-//   res.json(vets);
-// });
+// Ruta para obtener una veterinaria en particular
+
+router.get('/:id', async (req, res) => {
+  const { id } = req.params;
+  try {
+    const vets = await getVeterinariesClinics();
+    const vet = vets.find((v) => v.id === parseInt(id));
+    if (vet) {
+      res.json(vet);
+    } else {
+      res.status(404).send('Veterinary not found');
+    }
+  } catch (error) {
+    res.status(500).send('Error getting veterinary');
+  }
+});
 
 module.exports = router;
