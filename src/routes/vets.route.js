@@ -2,6 +2,8 @@ const { Router } = require('express');
 
 const router = Router();
 
+// /api/v1/vets
+
 // Ruta de bienvenida (no protegida)
 router.get('/', (req, res) => {
   res.send('Hola mundo!');
@@ -33,7 +35,9 @@ router.post('/login', (req, res) => {
 });
 
 // Ruta protegida
-router.get('/veterinaries', authenticateToken, (req, res) => {
+router.get('/', authenticateToken, (req, res) => {
   const vets = JSON.parse(fs.readFileSync('veterinaries.json'));
   res.json(vets);
 });
+
+module.exports = router;

@@ -3,11 +3,8 @@ const fs = require('fs');
 const jwt = require('jsonwebtoken');
 
 const app = express();
-app.use(express.json());
 
-app.listen(3000, () => {
-  console.log('Servidor iniciado');
-});
+const vetsRoute = require('./routes/vets.route.js');
 
 // Base de datos simulada de usuarios
 const users = [];
@@ -33,3 +30,11 @@ function authenticateToken(req, res, next) {
     next();
   });
 }
+
+app.use(express.json());
+
+app.use('api/v1/vets', vetsRoute);
+
+app.listen(3000, () => {
+  console.log('Server running on port 3000');
+});
