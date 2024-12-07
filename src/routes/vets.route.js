@@ -16,7 +16,7 @@ router.get('/', async (req, res) => {
     const vets = await getVeterinariesClinics();
     res.json(vets);
   } catch (error) {
-    res.status(500).send('Error getting veterinaries');
+    res.status(500).json({ error: error.message });
   }
 });
 
@@ -33,7 +33,7 @@ router.get('/:id', async (req, res) => {
       res.status(404).send('Veterinary not found');
     }
   } catch (error) {
-    res.status(500).send('Error getting veterinary');
+    res.status(500).json({ error: error.message });
   }
 });
 
