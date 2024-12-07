@@ -33,7 +33,7 @@ function authenticateToken(req, res, next) {
 
 app.use(express.json());
 
-app.use('api/v1/vets', vetsRoute);
+app.use('/api/v1/vets', vetsRoute);
 
 app.listen(3000, () => {
   console.log('Server running on port 3000');

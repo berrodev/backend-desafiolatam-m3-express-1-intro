@@ -1,12 +1,19 @@
 const { Router } = require('express');
+const {
+  getVeterinariesClinics,
+  addVeterinariesClinics,
+  deleteVeterinariesClinics,
+  updateVeterinariesClinics,
+} = require('../consultas.js');
 
 const router = Router();
 
 // /api/v1/vets
 
-// Ruta de bienvenida (no protegida)
-router.get('/', (req, res) => {
-  res.send('Hola mundo!');
+// Ruta para obtener todas las veterinarias
+router.get('/', async (req, res) => {
+  const vets = await getVeterinariesClinics();
+  res.json(vets);
 });
 
 // Ruta para registrarse
@@ -34,10 +41,10 @@ router.post('/login', (req, res) => {
   }
 });
 
-// Ruta protegida
-router.get('/', authenticateToken, (req, res) => {
-  const vets = JSON.parse(fs.readFileSync('veterinaries.json'));
-  res.json(vets);
-});
+// // Ruta protegida
+// router.get('/', authenticateToken, (req, res) => {
+//   const vets = JSON.parse(fs.readFileSync('veterinaries.json'));
+//   res.json(vets);
+// });
 
 module.exports = router;
