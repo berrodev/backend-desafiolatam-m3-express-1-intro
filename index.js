@@ -38,6 +38,9 @@ function authenticateToken(req, res, next) {
 app.post('/register', (req, res) => {
   console.log(req.body);
   const { username, password } = req.body;
+  if (!username || !password) {
+    return res.status(400).send('Usuario y contraseña requeridos');
+  }
   users.push({ username, password });
   res.status(201).send('Usuario registrado');
 });
