@@ -37,4 +37,39 @@ router.get('/:id', async (req, res) => {
   }
 });
 
+// Ruta para agregar una veterinaria
+router.post('/', async (req, res) => {
+  const { name, address, phone } = req.body;
+  try {
+    await addVeterinariesClinics(name, address, phone);
+
+    res.status(201).send('Veterinary added');
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// Ruta para eliminar una veterinaria
+router.delete('/:id', async (req, res) => {
+  const { id } = req.params;
+  try {
+    await deleteVeterinariesClinics(id);
+    res.send('Veterinary deleted');
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// Ruta para actualizar una veterinaria
+router.put('/:id', async (req, res) => {
+  const { id } = req.params;
+  const { name, address, phone } = req.body;
+  try {
+    await updateVeterinariesClinics(id, name, address, phone);
+    res.send('Veterinary updated');
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
 module.exports = router;
