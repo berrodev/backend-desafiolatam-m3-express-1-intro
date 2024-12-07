@@ -1,5 +1,14 @@
+const { Router } = require('express');
+
+const router = Router();
+
+// Ruta de bienvenida (no protegida)
+router.get('/', (req, res) => {
+  res.send('Hola mundo!');
+});
+
 // Ruta para registrarse
-app.post('/register', (req, res) => {
+router.post('/register', (req, res) => {
   console.log(req.body);
   const { username, password } = req.body;
   if (!username || !password) {
@@ -10,7 +19,7 @@ app.post('/register', (req, res) => {
 });
 
 // Ruta para iniciar sesión
-app.post('/login', (req, res) => {
+router.post('/login', (req, res) => {
   const { username, password } = req.body;
   const user = users.find(
     (u) => u.username === username && u.password === password
@@ -23,13 +32,8 @@ app.post('/login', (req, res) => {
   }
 });
 
-// Ruta de bienvenida (no protegida)
-app.get('/', (req, res) => {
-  res.send('Hola mundo!');
-});
-
 // Ruta protegida
-app.get('/veterinaries', authenticateToken, (req, res) => {
+router.get('/veterinaries', authenticateToken, (req, res) => {
   const vets = JSON.parse(fs.readFileSync('veterinaries.json'));
   res.json(vets);
 });
