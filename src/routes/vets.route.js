@@ -66,6 +66,7 @@ router.put('/:id', async (req, res) => {
   const { name, address, phone } = req.body;
   try {
     const vet = await updateVeterinariesClinics(id, name, address, phone);
+    console.log(vet);
     if (!vet) {
       res.status(404).send('Veterinary not found');
     } else {
