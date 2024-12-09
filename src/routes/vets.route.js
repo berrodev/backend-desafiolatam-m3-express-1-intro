@@ -42,7 +42,6 @@ router.post('/', async (req, res) => {
   const { name, address, phone } = req.body;
   try {
     await addVeterinariesClinics(name, address, phone);
-
     res.status(201).send('Veterinary added');
   } catch (error) {
     res.status(500).json({ error: error.message });

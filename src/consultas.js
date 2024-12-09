@@ -13,7 +13,7 @@ const getVeterinariesClinics = async (req, res) => {
   return rows;
 };
 
-//Agregar Veterinaria
+// Agregar Veterinaria
 const addVeterinariesClinics = async (name, address, phone) => {
   const consulta = 'INSERT INTO vet_clinics values (DEFAULT, $1, $2, $3)';
   const values = [name, address, phone];
@@ -34,14 +34,6 @@ const updateVeterinariesClinics = async (id, name, address, phone) => {
   const values = [id, name, address, phone];
   return await pool.query(consulta, values);
 };
-
-// addVeterinariesClinics('Veterinaria Zoo', 'Providencia 9000', '22222222');
-
-// getVeterinariesClinics();
-
-// deleteVeterinariesClinics(1);
-
-// updateVeterinariesClinics(2, 'Veterinaria Petco', 'Providencia 111', '333333');
 
 module.exports = {
   getVeterinariesClinics,
