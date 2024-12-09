@@ -1,10 +1,10 @@
--- -- Insertar veterinarias
--- INSERT INTO vet_clinics (name, address, phone)
--- VALUES 
--- ('Veterinaria Los Andes', 'Av. Santa Rosa 1234, Santiago', '+56 2 12345678'),
--- ('Clínica VetCare', 'Calle Independencia 456, Valparaíso', '+56 32 87654321'),
--- ('Mascotas Felices', 'Av. Alemania 789, Concepción', '+56 41 23456789'),
--- ('Salud Animal Temuco', 'Ruta 5 Sur KM 15, Temuco', '+56 45 56789012');
+-- Insertar veterinarias
+INSERT INTO vet_clinics (name, address, phone)
+VALUES 
+('Veterinaria Los Andes', 'Av. Santa Rosa 1234, Santiago', '+56 2 12345678'),
+('Clínica VetCare', 'Calle Independencia 456, Valparaíso', '+56 32 87654321'),
+('Mascotas Felices', 'Av. Alemania 789, Concepción', '+56 41 23456789'),
+('Salud Animal Temuco', 'Ruta 5 Sur KM 15, Temuco', '+56 45 56789012');
 
 -- -- Insertar especialidades
 -- INSERT INTO specialties (name)
