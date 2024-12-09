@@ -4,7 +4,7 @@ const {
   addVeterinariesClinics,
   deleteVeterinariesClinics,
   updateVeterinariesClinics,
-} = require('../consultas.js');
+} = require('../models/vets.model.js');
 
 const router = Router();
 
@@ -40,6 +40,10 @@ router.get('/:id', async (req, res) => {
 // Ruta para agregar una veterinaria
 router.post('/', async (req, res) => {
   const { name, address, phone } = req.body;
+  if (!name || !address || !phone) {
+    res.status(400).json({ error: 'Missing fields' });
+    return;
+  }
   try {
     await addVeterinariesClinics(name, address, phone);
     res.status(201).send('Veterinary added');
@@ -52,8 +56,12 @@ router.post('/', async (req, res) => {
 router.delete('/:id', async (req, res) => {
   const { id } = req.params;
   try {
-    await deleteVeterinariesClinics(id);
-    res.send('Veterinary deleted');
+    const { rowCount } = await deleteVeterinariesClinics(id);
+    if (rowCount === 0) {
+      res.status(404).send('Veterinary not found');
+    } else {
+      res.send('Veterinary deleted');
+    }
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
@@ -64,9 +72,13 @@ router.put('/:id', async (req, res) => {
   const { id } = req.params;
   const { name, address, phone } = req.body;
   try {
-    const vet = await updateVeterinariesClinics(id, name, address, phone);
-    console.log(vet);
-    if (!vet) {
+    const { rowCount } = await updateVeterinariesClinics(
+      id,
+      name,
+      address,
+      phone
+    );
+    if (rowCount === 0) {
       res.status(404).send('Veterinary not found');
     } else {
       res.send('Veterinary updated');

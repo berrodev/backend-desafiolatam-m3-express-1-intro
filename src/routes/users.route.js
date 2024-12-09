@@ -2,6 +2,7 @@ const { Router } = require('express');
 
 const router = Router();
 
+// TODO ruta futura
 // Ruta para registrarse
 router.post('/register', (req, res) => {
   console.log(req.body);
