@@ -60,4 +60,10 @@ describe('GET /api/v1/vets', () => {
     expect(response.statusCode).toBe(200);
     expect(response.body).toEqual(vets);
   });
+
+  it('should return a specific veterinary', async () => {
+    const response = await request(app).get('/api/v1/vets/1');
+    expect(response.statusCode).toBe(200);
+    expect(response.body).toEqual(vets[0]);
+  });
 });
