@@ -17,14 +17,14 @@ const getVeterinariesClinics = async (req, res) => {
 const addVeterinariesClinics = async (name, address, phone) => {
   const consulta = 'INSERT INTO vet_clinics values (DEFAULT, $1, $2, $3)';
   const values = [name, address, phone];
-  const result = await pool.query(consulta, values);
+  return await pool.query(consulta, values);
 };
 
 // Eliminar Veterinaria
 const deleteVeterinariesClinics = async (id) => {
   const consulta = 'DELETE FROM vet_clinics WHERE id = $1';
   const values = [id];
-  const result = await pool.query(consulta, values);
+  return await pool.query(consulta, values);
 };
 
 // Actualizar Veterinaria
@@ -32,8 +32,7 @@ const updateVeterinariesClinics = async (id, name, address, phone) => {
   const consulta =
     'UPDATE vet_clinics SET name = $2, address = $3, phone = $4 WHERE id = $1';
   const values = [id, name, address, phone];
-  const result = await pool.query(consulta, values);
-  return result;
+  return await pool.query(consulta, values);
 };
 
 // addVeterinariesClinics('Veterinaria Zoo', 'Providencia 9000', '22222222');
