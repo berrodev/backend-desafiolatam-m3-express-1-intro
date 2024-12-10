@@ -16,10 +16,10 @@ const router = Router();
  * @openapi
  *  /api/v1/vets:
  *    get:
- *      description: Welcome to swagger-jsdoc!
+ *      description: Get all veterinaries
  *      responses:
  *        200:
- *          description: Returns a mysterious string.
+ *          description: Success
  *        500:
  *          description: Internal server error
  *
