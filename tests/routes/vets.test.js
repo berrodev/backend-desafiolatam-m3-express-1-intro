@@ -49,20 +49,20 @@ jest.mock('../../src/models/vets.model.js', () => ({
 
 describe('/api/v1/vets', () => {
   it('GET should return all veterinaries', async () => {
-    const response = await request(app).get('/api/v1/vets');
-    expect(response.statusCode).toBe(200);
-    expect(response.body).toEqual(DUMMY_VETS);
+    const { statusCode, body } = await request(app).get('/api/v1/vets');
+    expect(statusCode).toBe(200);
+    expect(body).toEqual(DUMMY_VETS);
   });
 
   it('GET should return a specific veterinary', async () => {
-    const response = await request(app).get('/api/v1/vets/1');
-    expect(response.statusCode).toBe(200);
-    expect(response.body).toEqual(DUMMY_VETS[0]);
+    const { statusCode, body } = await request(app).get('/api/v1/vets/1');
+    expect(statusCode).toBe(200);
+    expect(body).toEqual(DUMMY_VETS[0]);
   });
 
   it('GET should return 404 if veterinary is not found', async () => {
-    const response = await request(app).get('/api/v1/vets/3');
-    expect(response.statusCode).toBe(404);
+    const { statusCode } = await request(app).get('/api/v1/vets/3');
+    expect(statusCode).toBe(404);
   });
 
   it('POST should add a new veterinary', async () => {
@@ -71,27 +71,27 @@ describe('/api/v1/vets', () => {
       address: 'Calle Larga 789, La Serena',
       phone: '+569123123123',
     };
-    const response = await request(app).post('/api/v1/vets').send(newVet);
-    expect(response.statusCode).toBe(201);
+    const { statusCode } = await request(app).post('/api/v1/vets').send(newVet);
+    expect(statusCode).toBe(201);
     expect(DUMMY_VETS).toContainEqual(expect.objectContaining(newVet));
   });
 
   it('POST should return 400 if missing fields', async () => {
-    const response = await request(app).post('/api/v1/vets').send({});
-    expect(response.statusCode).toBe(400);
+    const { statusCode } = await request(app).post('/api/v1/vets').send({});
+    expect(statusCode).toBe(400);
   });
 
   it('DELETE should remove a veterinary', async () => {
-    const response = await request(app).delete('/api/v1/vets/1');
-    console.log(response.statusCode);
+    const { statusCode } = await request(app).delete('/api/v1/vets/1');
+    console.log(statusCode);
 
-    expect(response.statusCode).toBe(200);
+    expect(statusCode).toBe(200);
     expect(DUMMY_VETS).not.toContainEqual(expect.objectContaining({ id: 1 }));
   });
 
   it('DELETE should return 404 if veterinary is not found', async () => {
-    const response = await request(app).delete('/api/v1/vets/5');
-    expect(response.statusCode).toBe(404);
+    const { statusCode } = await request(app).delete('/api/v1/vets/5');
+    expect(statusCode).toBe(404);
   });
 
   it('PUT should update a veterinary', async () => {
@@ -100,22 +100,24 @@ describe('/api/v1/vets', () => {
       address: 'Calle Larga 789, La Serena',
       phone: '+569123123123',
     };
-    const response = await request(app).put('/api/v1/vets/2').send(updatedVet);
-    expect(response.statusCode).toBe(200);
+    const { statusCode } = await request(app)
+      .put('/api/v1/vets/2')
+      .send(updatedVet);
+    expect(statusCode).toBe(200);
     expect(DUMMY_VETS).toContainEqual(expect.objectContaining(updatedVet));
   });
 
   it('PUT should return 404 if veterinary is not found', async () => {
-    const response = await request(app).put('/api/v1/vets/5').send({
+    const { statusCode } = await request(app).put('/api/v1/vets/5').send({
       name: 'Clínica Veterinaria Animalia',
       address: 'Calle Larga 789, La Serena',
       phone: '+569123123123',
     });
-    expect(response.statusCode).toBe(404);
+    expect(statusCode).toBe(404);
   });
 
   it('PUT should return 400 if missing fields', async () => {
-    const response = await request(app).put('/api/v1/vets/1').send({});
-    expect(response.statusCode).toBe(400);
+    const { statusCode } = await request(app).put('/api/v1/vets/1').send({});
+    expect(statusCode).toBe(400);
   });
 });
