@@ -193,6 +193,10 @@ router.delete('/:id', async (req, res) => {
 router.put('/:id', async (req, res) => {
   const { id } = req.params;
   const { name, address, phone } = req.body;
+  if (!name || !address || !phone) {
+    res.status(400).json({ error: 'Missing fields' });
+    return;
+  }
   try {
     const { rowCount } = await updateVeterinariesClinics(
       id,
