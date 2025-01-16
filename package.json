@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
+    "test:watch": "jest --watch",
     "dev": "nodemon index.js"
   },
   "author": "",
@@ -12,7 +13,13 @@
   "dependencies": {
     "express": "^4.21.1",
     "jsonwebtoken": "^9.0.2",
-    "nodemon": "^3.1.7",
     "pg": "^8.13.1"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "nodemon": "^3.1.7",
+    "supertest": "^7.0.0",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.1"
   }
 }
