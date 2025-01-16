@@ -4,7 +4,7 @@ const {
   addVeterinariesClinics,
   deleteVeterinariesClinics,
   updateVeterinariesClinics,
-} = require('../models/vets.model.js');
+} = require('../database/pg/models/vets.model.js');
 
 const router = Router();
 
