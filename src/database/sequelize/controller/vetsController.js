@@ -1,7 +1,6 @@
 import { Vets } from '../models/vets.model.js';
 
 export const getVets = async (req, res) => {
-  console.log('getVets');
   try {
     const vets = await Vets.findAll();
     res.json(vets);
