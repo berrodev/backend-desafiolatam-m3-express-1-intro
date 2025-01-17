@@ -22,5 +22,5 @@ export const Vets = sequelize.define(
       allowNull: false,
     },
   },
-  { timestamps: false }
+  { timestamps: true, underscored: true }
 );

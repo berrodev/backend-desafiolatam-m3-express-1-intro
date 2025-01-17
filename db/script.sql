@@ -3,13 +3,17 @@
 DROP DATABASE IF EXISTS vets;
 
 CREATE DATABASE vets;
-    
+
+DROP TABLE IF EXISTS vet_clinics;
+
 -- Table for veterinary clinics
 CREATE TABLE vet_clinics (
     id SERIAL PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
     address VARCHAR(200) NOT NULL,
-    phone VARCHAR(15) NOT NULL
+    phone VARCHAR(15) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 
