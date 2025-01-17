@@ -19,6 +19,7 @@ import {
   addVet,
   deleteVet,
   updateVet,
+  getVetById,
 } from './database/sequelize/controller/vetsController.js';
 import { sequelize } from './database/sequelize/sequelize.js';
 
@@ -41,5 +42,9 @@ async function main() {
 main();
 
 app.get('/api/v1/vets', getVets);
+app.get('/api/v1/vets/:id', getVetById);
+app.post('/api/v1/vets', addVet);
+app.delete('/api/v1/vets/:id', deleteVet);
+app.put('/api/v1/vets/:id', updateVet);
 
 export default app;

@@ -10,6 +10,16 @@ export const getVets = async (req, res) => {
   }
 };
 
+export const getVetById = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const vet = await Vets.findByPk(id);
+    res.json(vet);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
 export const addVet = async (req, res) => {
   try {
     const newVet = await Vets.create(req.body);
