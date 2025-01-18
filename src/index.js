@@ -1,7 +1,7 @@
 // const express = require('express');
 // const app = express();
 // const vetsRoute = require('./routes/vets.route.js');
-// const { swaggerDocs } = require('./docs/swagger.js');
+import { swaggerDocs } from '../docs/swagger.js';
 // app.use(express.json());
 
 // app.use('/api/v1/vets', vetsRoute);
@@ -20,14 +20,15 @@ import {
   deleteVet,
   updateVet,
   getVetById,
-} from './database/sequelize/controller/vetsController.js';
-import { sequelize } from './database/sequelize/sequelize.js';
+} from './controllers/vets.controller.js';
+import { sequelize } from './config/sequelize.js';
 
 const app = express();
 app.use(express.json());
 
 app.listen(3000, () => {
   console.log('Server running on port 3000');
+  swaggerDocs(app, 3000);
 });
 
 async function main() {
