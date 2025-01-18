@@ -1,26 +1,6 @@
-// const express = require('express');
-// const app = express();
-// const vetsRoute = require('./routes/vets.route.js');
+import vetsRoute from './routes/vets.routes.js ';
 import { swaggerDocs } from '../docs/swagger.js';
-// app.use(express.json());
-
-// app.use('/api/v1/vets', vetsRoute);
-
-// app.listen(3000, () => {
-//   console.log('Server running on port 3000');
-//   swaggerDocs(app, 3000);
-// });
-
-// module.exports = app;
-
 import express from 'express';
-import {
-  getVets,
-  addVet,
-  deleteVet,
-  updateVet,
-  getVetById,
-} from './controllers/vets.controller.js';
 import { sequelize } from './config/sequelize.js';
 
 const app = express();
@@ -42,10 +22,6 @@ async function main() {
 
 main();
 
-app.get('/api/v1/vets', getVets);
-app.get('/api/v1/vets/:id', getVetById);
-app.post('/api/v1/vets', addVet);
-app.delete('/api/v1/vets/:id', deleteVet);
-app.put('/api/v1/vets/:id', updateVet);
+app.use('/api/v1/vets', vetsRoute);
 
 export default app;

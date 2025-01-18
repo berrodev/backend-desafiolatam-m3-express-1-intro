@@ -1,11 +1,11 @@
-const { Router } = require('express');
+import { Router } from 'express';
 import {
   getVets,
   addVet,
   deleteVet,
   updateVet,
   getVetById,
-} from './controllers/vets.controller.js';
+} from '../controllers/vets.controller.js';
 
 const router = Router();
 
@@ -148,4 +148,4 @@ router.delete('/:id', deleteVet);
 // Ruta para actualizar una veterinaria
 router.put('/:id', updateVet);
 
-module.exports = router;
+export default router;
