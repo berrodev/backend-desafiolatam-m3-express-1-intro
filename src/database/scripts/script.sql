@@ -17,39 +17,10 @@ CREATE TABLE vet_clinics (
 );
 
 
-
-
--- -- Table for specialties
--- CREATE TABLE specialties (
---     id SERIAL PRIMARY KEY,
---     name VARCHAR(100) NOT NULL
--- );
-
--- -- Relationship between vet clinics and specialties
--- CREATE TABLE clinic_specialty (
---     clinic_id INT REFERENCES vet_clinics(id) ON DELETE CASCADE,
---     specialty_id INT REFERENCES specialties(id) ON DELETE CASCADE,
---     PRIMARY KEY (clinic_id, specialty_id)
--- );
-
--- -- Table for additional services
--- CREATE TABLE services (
---     id SERIAL PRIMARY KEY,
---     name VARCHAR(100) NOT NULL
--- );
-
--- -- Relationship between vet clinics and additional services
--- CREATE TABLE clinic_service (
---     clinic_id INT REFERENCES vet_clinics(id) ON DELETE CASCADE,
---     service_id INT REFERENCES services(id) ON DELETE CASCADE,
---     PRIMARY KEY (clinic_id, service_id)
--- );
-
--- -- Table for business hours
--- CREATE TABLE business_hours (
---     id SERIAL PRIMARY KEY,
---     clinic_id INT REFERENCES vet_clinics(id) ON DELETE CASCADE,
---     day_of_week VARCHAR(15) NOT NULL, -- Example: "Monday", "Tuesday"
---     opening_time TIME NOT NULL,
---     closing_time TIME NOT NULL
--- );
+-- Insert vets clinics
+INSERT INTO vet_clinics (name, address, phone)
+VALUES 
+('Veterinaria Los Andes', 'Av. Santa Rosa 1234, Santiago', '+56 2 12345678'),
+('Clínica VetCare', 'Calle Independencia 456, Valparaíso', '+56 32 87654321'),
+('Mascotas Felices', 'Av. Alemania 789, Concepción', '+56 41 23456789'),
+('Salud Animal Temuco', 'Ruta 5 Sur KM 15, Temuco', '+56 45 56789012');
