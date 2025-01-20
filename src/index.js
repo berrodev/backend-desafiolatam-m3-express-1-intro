@@ -1,14 +1,27 @@
-const express = require('express');
-const app = express();
-const vetsRoute = require('./routes/vets.route.js');
-const { swaggerDocs } = require('./docs/swagger.js');
-app.use(express.json());
+import vetsRoute from './routes/vets.routes.js ';
+import { swaggerDocs } from '../docs/swagger.js';
+import express from 'express';
+import { sequelize } from './config/sequelize.js';
 
-app.use('/api/v1/vets', vetsRoute);
+const app = express();
+app.use(express.json());
 
 app.listen(3000, () => {
   console.log('Server running on port 3000');
   swaggerDocs(app, 3000);
 });
 
-module.exports = app;
+async function main() {
+  try {
+    await sequelize.authenticate();
+    console.log('Connection has been established successfully.');
+  } catch (error) {
+    console.error('Unable to connect to the database:', error);
+  }
+}
+
+main();
+
+app.use('/api/v1/vets', vetsRoute);
+
+export default app;
