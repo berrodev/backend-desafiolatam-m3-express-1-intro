@@ -1,4 +1,3 @@
-console.log('===============================');
 import request from 'supertest';
 import app from '../../src/index.js';
 import { jest } from '@jest/globals';
@@ -19,8 +18,8 @@ const DUMMY_VETS = [
 
 // Se intercepta el módulo de la base de datos para simular su comportamiento
 jest.mock('../../src/models/vets.model.js', () => ({
-  getVeterinariesClinics: jest.fn(() => Promise.resolve(DUMMY_VETS)),
-  addVeterinariesClinics: jest.fn((name, address, phone) => {
+  getVets: jest.fn(() => Promise.resolve(DUMMY_VETS)),
+  addVet: jest.fn((name, address, phone) => {
     const vet = {
       id: DUMMY_VETS.length + 1,
       name,
@@ -30,7 +29,7 @@ jest.mock('../../src/models/vets.model.js', () => ({
     DUMMY_VETS.push(vet);
     return Promise.resolve();
   }),
-  deleteVeterinariesClinics: jest.fn((id) => {
+  deleteVet: jest.fn((id) => {
     const vet = DUMMY_VETS.find((v) => v.id === parseInt(id));
     if (vet)
       return Promise.resolve(DUMMY_VETS.splice(DUMMY_VETS.indexOf(vet), 1));
@@ -38,7 +37,7 @@ jest.mock('../../src/models/vets.model.js', () => ({
       return Promise.resolve({ rowCount: 0 });
     }
   }),
-  updateVeterinariesClinics: jest.fn((id, name, address, phone) => {
+  updateVet: jest.fn((id, name, address, phone) => {
     const index = DUMMY_VETS.findIndex((v) => v.id === parseInt(id));
     if (index === -1) {
       return Promise.resolve({ rowCount: 0 });
