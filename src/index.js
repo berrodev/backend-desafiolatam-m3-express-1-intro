@@ -1,4 +1,4 @@
-import vetsRoute from './routes/vets.routes.js ';
+import vetsRoute from './routes/vets.routes.js';
 import { swaggerDocs } from '../docs/swagger.js';
 import express from 'express';
 import { sequelize } from './config/sequelize.js';

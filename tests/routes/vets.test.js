@@ -1,6 +1,7 @@
-const request = require('supertest');
-const app = require('../../src/index.js');
-
+console.log('===============================');
+import request from 'supertest';
+import app from '../../src/index.js';
+import { jest } from '@jest/globals';
 const DUMMY_VETS = [
   {
     id: 1,

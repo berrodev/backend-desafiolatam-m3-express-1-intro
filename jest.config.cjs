@@ -88,7 +88,7 @@ const config = {
   //   "node"
   // ],
 
-  moduleFileExtensions: ['js', 'json', 'cjs'],
+  moduleFileExtensions: ['js', 'json', 'cjs', 'mjs'],
   // A map from regular expressions to module names or to arrays of module names that allow to stub out resources with a single module
   // moduleNameMapper: {},
 
@@ -176,7 +176,7 @@ const config = {
 
   // A map from regular expressions to paths to transformers
   // transform: undefined,
-
+  transform: {},
   // An array of regexp pattern strings that are matched against all source file paths, matched files will skip transformation
   // transformIgnorePatterns: [
   //   "\\\\node_modules\\\\",
