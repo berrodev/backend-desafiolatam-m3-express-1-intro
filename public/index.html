@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+      const socket = io('http://localhost:3000');
+      socket.on('connect', () => {
+        console.log('Connected to server');
+      });
+      // Listen for messages
+      socket.on('chat', (msg) => {
+        const li = document.createElement('li');
+        li.textContent = msg;
+        document.getElementById('messages').appendChild(li);
+      });
+
+      // Login
+      function login() {
+        const username = document.getElementById('username').value;
+        socket.emit('login', username);
+        document.getElementById('loginForm').style.display = 'none';
+      }
+
+      // Send message with username
+      function sendMessage() {
+        const message = document.getElementById('message').value;
+        socket.emit('chat', message);
+        document.getElementById('message').value = '';
+      }
+    </script>
+  </head>
+  <body>
+    <h2>Chat</h2>
+    <div id="loginForm">
+      <input type="text" id="username" placeholder="Enter username" />
+      <button onclick="login()">Login</button>
+    </div>
+
+    <input type="text" id="message" placeholder="Type a message..." />
+    <button onclick="sendMessage()">Send</button>
+    <ul id="messages"></ul>
+  </body>
+</html>

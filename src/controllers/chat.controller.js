@@ -1,7 +1,14 @@
-const sendMessage = (io, message) => {
-  io.emit('chat', message);
-};
+export default function (io) {
+  io.on('connection', (socket) => {
+    console.log('a user connected');
 
-export const ChatController = {
-  sendMessage,
-};
+    socket.on('disconnect', () => {
+      console.log('user disconnected');
+    });
+
+    socket.on('chat message', (msg) => {
+      console.log('message: ' + msg);
+      io.emit('chat message', msg);
+    });
+  });
+}
