@@ -26,13 +26,13 @@
   <body>
     <h1>Socket.io Chat</h1>
 
-    <!-- Contenedor de Login -->
+    <!-- Login container -->
     <div id="loginContainer">
       <input id="username" type="text" placeholder="Your name." />
       <button id="loginBtn" onclick="login()">Login</button>
     </div>
 
-    <!-- Contenedor del Chat (Oculto por defecto) -->
+    <!-- Chat container (hidden by default) -->
     <div id="chatContainer" style="display: none">
       <button id="logoutBtn" onclick="logout()">Logout</button>
       <div id="messages"></div>
@@ -53,17 +53,32 @@
       function login() {
         const username = document.getElementById('username').value.trim();
         if (username) {
+          // Store cookie in the browser
+          document.cookie = `username=${username}; Path=/`;
           socket.emit('login', username);
-          loggedIn = true;
           toggleUI(true);
+          loggedIn = true;
         }
       }
 
       function logout() {
+        document.cookie =
+          'username=; Path=/; Expires=Thu, 01 Jan 1970 00:00:00 GMT'; // Borrar cookie
         socket.emit('logout');
-        loggedIn = false;
         toggleUI(false);
       }
+
+      // Check if the user is already logged in
+      window.onload = () => {
+        const cookies = document.cookie.split('; ');
+        const usernameCookie = cookies.find((c) => c.startsWith('username='));
+        if (usernameCookie) {
+          const username = usernameCookie.split('=')[1];
+          socket.emit('login', username);
+          toggleUI(true);
+          loggedIn = true;
+        }
+      };
 
       function sendMessage() {
         if (!loggedIn) {

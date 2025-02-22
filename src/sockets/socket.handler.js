@@ -4,21 +4,39 @@ const users = {};
 
 export default function (io) {
   io.on('connection', (socket) => {
-    console.log('User connected', socket.id);
+    // Leer la cookie de usuario si existe
+    const cookies = socket.handshake.headers.cookie;
+    let username = cookies
+      ? cookies.split('; ').find((c) => c.startsWith('username='))
+      : null;
+    if (username) {
+      username = username.split('=')[1];
+      users[socket.id] = username;
+      socket.emit('message', `Welcome back, ${username}!`);
+    }
 
-    // User login
+    console.log('User connected', socket.id);
+    // Login handling
     socket.on('login', (username) => {
       users[socket.id] = username;
       socket.emit('message', `Welcome, ${username}!`);
+      socket.handshake.headers.cookie = `username=${username}; Path=/; HttpOnly`; // Store cookie
+    });
+    // Logout handling
+    socket.on('logout', () => {
+      delete users[socket.id];
+      socket.emit('message', 'disconnected.');
+      socket.handshake.headers.cookie =
+        'username=; Path=/; Expires=Thu, 01 Jan 1970 00:00:00 GMT'; // Delete cookie
     });
 
-    // Chat message
+    // Message handling
     socket.on('chatMessage', (msg) => {
       const username = users[socket.id] || 'Anonymous';
       io.emit('message', `${username}: ${msg}`);
     });
 
-    // User disconnected
+    // Discconection handling
     socket.on('disconnect', () => {
       console.log('User disconnected', users[socket.id]);
       delete users[socket.id];
@@ -26,7 +44,7 @@ export default function (io) {
 
     // Error handling
     socket.on('error', (err) => {
-      console.error('Socket error:', err);
+      console.error('Socket error: ', err);
     });
   });
 }

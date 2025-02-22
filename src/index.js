@@ -10,6 +10,7 @@ import { fileURLToPath } from 'url';
 import http from 'http';
 import { Server } from 'socket.io';
 import socketHandler from './sockets/socket.handler.js';
+import cookieParser from 'cookie-parser';
 const app = express();
 const server = http.createServer(app);
 const io = new Server(server, {
@@ -19,6 +20,8 @@ const io = new Server(server, {
   },
 });
 app.use(cors());
+
+app.use(cookieParser());
 
 app.use(express.json());
 
