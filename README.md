@@ -1,7 +1,10 @@
-
 # Veterinaries API
 
+## Chat route
 
+```http
+/api/v1/chat
+```
 
 ## Installation
 
@@ -13,12 +16,13 @@ Install vets API with npm
 ```
 
 Run Postgresql Database Script
+
 ```http
 ../src/database/scripts/script.sql
 ```
-    
 
 ## SwaggerDocs
+
 ```http
   /api/v1/docs
 ```
@@ -37,8 +41,8 @@ Run Postgresql Database Script
   GET /api/v1/vets/${id}
 ```
 
-| Parameter | Type     | Description                       |
-| :-------- | :------- | :-------------------------------- |
+| Parameter | Type     | Description                      |
+| :-------- | :------- | :------------------------------- |
 | `id`      | `string` | **Required**. Id of vet to fetch |
 
 #### Post vet
@@ -47,11 +51,11 @@ Run Postgresql Database Script
   POST /api/v1/vets/
 ```
 
-| Body Parameter | Type     | Description                       |
-| :-------- | :------- | :-------------------------------- |
-| `name`      | `string` | **Required**. Name of vet to post |
+| Body Parameter | Type     | Description                          |
+| :------------- | :------- | :----------------------------------- |
+| `name`         | `string` | **Required**. Name of vet to post    |
 | `address`      | `string` | **Required**. Address of vet to post |
-| `phone`      | `string` | **Required**. Phone of vet to post |
+| `phone`        | `string` | **Required**. Phone of vet to post   |
 
 #### Delete vet
 
@@ -59,9 +63,9 @@ Run Postgresql Database Script
   DELETE /api/v1/vets/${id}
 ```
 
-| Body Parameter | Type     | Description                       |
-| :-------- | :------- | :-------------------------------- |
-| `id`      | `integer` | **Required**. Id of vet to delete |
+| Body Parameter | Type      | Description                       |
+| :------------- | :-------- | :-------------------------------- |
+| `id`           | `integer` | **Required**. Id of vet to delete |
 
 #### Edit vet
 
@@ -69,8 +73,8 @@ Run Postgresql Database Script
   Put /api/v1/vets/${id}
 ```
 
-| Body Parameter | Type     | Description                       |
-| :-------- | :------- | :-------------------------------- |
-| `name`      | `string` | **Required**. Id of vet to edit |
+| Body Parameter | Type     | Description                          |
+| :------------- | :------- | :----------------------------------- |
+| `name`         | `string` | **Required**. Id of vet to edit      |
 | `address`      | `string` | **Required**. address of vet to edit |
-| `phone`      | `string` | **Required**. phone of vet to edit |
+| `phone`        | `string` | **Required**. phone of vet to edit   |
